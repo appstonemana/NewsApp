@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnIte
                         Log.d(TAG, "onResponse: :::::::: ok");
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                         ArrayList<NewsModel.Articles> articles = (ArrayList<NewsModel.Articles>) response.body().getArticles();
-                        adapter = new NewsAdapter(getApplicationContext(),articles);
-                        mRvNewsList.setAdapter(adapter);
+
+                        setupAdapter(articles);
                     } else {
                         Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
@@ -98,8 +98,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnIte
                         Log.d(TAG, "onResponse: :::::::: ok");
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                         ArrayList<NewsModel.Articles> articles = (ArrayList<NewsModel.Articles>) response.body().getArticles();
-                        adapter = new NewsAdapter(getApplicationContext(),articles);
-                        mRvNewsList.setAdapter(adapter);
+                        setupAdapter(articles);
                     } else {
                         Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
@@ -123,8 +122,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnIte
                         Log.d(TAG, "onResponse: :::::::: ok");
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                         ArrayList<NewsModel.Articles> articles = (ArrayList<NewsModel.Articles>) response.body().getArticles();
-                        adapter = new NewsAdapter(getApplicationContext(),articles);
-                        mRvNewsList.setAdapter(adapter);
+                        setupAdapter(articles);
                     } else {
                         Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
@@ -148,8 +146,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnIte
                         Log.d(TAG, "onResponse: :::::::: ok");
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                         ArrayList<NewsModel.Articles> articles = (ArrayList<NewsModel.Articles>) response.body().getArticles();
-                        adapter = new NewsAdapter(getApplicationContext(),articles);
-                        mRvNewsList.setAdapter(adapter);
+                        setupAdapter(articles);
                     } else {
                         Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
@@ -163,6 +160,12 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnIte
             });
         }
 
+    }
+
+    private void setupAdapter(ArrayList<NewsModel.Articles> articles) {
+        adapter = new NewsAdapter(getApplicationContext(),articles);
+        adapter.setListener(this);
+        mRvNewsList.setAdapter(adapter);
     }
 
     @Override
