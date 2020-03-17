@@ -1,6 +1,7 @@
 package com.appstone.news21;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NewsAdapter.OnItemClickListener {
 
     private static final String TAG = "MainActivity";
     private RecyclerView mRvNewsList;
@@ -161,6 +162,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+    }
+
+    @Override
+    public void onItemClick(String image, String content) {
+
+        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+        intent.putExtra("content", content);
+        intent.putExtra("img", image);
+        startActivity(intent);
 
     }
 }

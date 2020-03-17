@@ -53,10 +53,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.mCvRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, DetailsActivity.class);
-                intent.putExtra("content", news.getContent());
-                intent.putExtra("img", news.getUrlToImage());
-                mContext.startActivity(intent);
+                listener.onItemClick(news.getUrlToImage(),news.getContent());
             }
         });
 
@@ -82,5 +79,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             mTvNewsTitle = itemView.findViewById(R.id.tv_news_title);
             mCvRoot = itemView.findViewById(R.id.cv_root);
         }
+    }
+
+    OnItemClickListener listener;
+
+    public void setListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(String image,String content);
     }
 }
