@@ -54,7 +54,7 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.MenuViewHolder
                         mContext.startActivity(intent);
                         break;
                     case 1:
-                        intent.putExtra("key", "Finance");
+                        intent.putExtra("key", "Health");
                         mContext.startActivity(intent);
                         break;
                     case 2:

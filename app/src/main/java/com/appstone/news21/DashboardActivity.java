@@ -24,7 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
         ArrayList<MenuModel> menuList = new ArrayList<>();
 
         menuList.add(new MenuModel("Sports"));
-        menuList.add(new MenuModel("Finance"));
+        menuList.add(new MenuModel("Health"));
         menuList.add(new MenuModel("Entertainment"));
         menuList.add(new MenuModel("Technology"));
 

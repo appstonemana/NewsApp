@@ -46,16 +46,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         // include binding logic here
         final NewsModel.Articles news = mData.get(position);
         holder.mTvNewsTitle.setText(news.getTitle());
-        Picasso.get().load(news.getUrlToImage())
-                .placeholder(R.drawable.img_placeholder)
-                .error(R.drawable.img_placeholder)
-                .into(holder.mIvNewsImg);
-        holder.mCvRoot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(news.getUrlToImage(),news.getContent());
+        if (news.getUrlToImage() != null && news.getContent() != null){
+            try{
+                Picasso.get().load(news.getUrlToImage())
+                        .placeholder(R.drawable.img_placeholder)
+                        .error(R.drawable.img_placeholder)
+                        .into(holder.mIvNewsImg);
+            }catch (Exception e){
+                e.printStackTrace();
             }
-        });
+
+            holder.mCvRoot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(news.getUrlToImage(),news.getContent());
+                }
+            });
+        }
 
     }
 

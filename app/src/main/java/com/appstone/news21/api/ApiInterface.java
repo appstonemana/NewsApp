@@ -13,7 +13,7 @@ public interface ApiInterface {
     @GET("top-headlines?sources=hacker-news&apiKey=bd7852f683354058982aacab5a694fcd")
     Call<NewsModel> getTechNews();
 
-    @GET("top-headlines?sources=financial-times&apiKey=bd7852f683354058982aacab5a694fcd")
+    @GET("top-headlines?country=in&category=health&apiKey=bd7852f683354058982aacab5a694fcd")
     Call<NewsModel> getFinanceNews();
 
     @GET("top-headlines?sources=buzzfeed&apiKey=bd7852f683354058982aacab5a694fcd")

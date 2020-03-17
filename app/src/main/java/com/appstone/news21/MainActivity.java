@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.OnIte
                 }
             });
         }
-        if (category.equals("Finance")){
+        if (category.equals("Health")){
             ai.getFinanceNews().enqueue(new Callback<NewsModel>() {
                 @Override
                 public void onResponse(@NonNull Call<NewsModel> call, @NonNull Response<NewsModel> response) {
